@@ -26,10 +26,17 @@ CBC_manageListCourses = {
           //this.afficheList();
 
           // Vide le champs pour faciliter les nouveaux ajouts
-          $("#input").val("");
+          //$("#input").val("");
 
           //return $addedItem
           console.log(s.itemName);
+            
+          // change the input size with long animate
+          $('#input').animate({
+           "width" : "+=15"
+          }, 5000, function() {
+            console.info( 'animate finished.' );
+          })
 
         });
 
