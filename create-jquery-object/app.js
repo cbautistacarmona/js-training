@@ -1,10 +1,9 @@
 jQuery(document).ready(function($) {
 
+
   function listeDeCourses(){
 
-
     var itemName;
-    //var $addedItem; // Useless ?
     var itemsList = []
 
        this.manageEvents = function(){
@@ -13,8 +12,6 @@ jQuery(document).ready(function($) {
         $("form").submit(function(e){
           e.preventDefault();
           itemName=$('#input').val();
-
-          // $addedItem = $("<li class='article'></li>").text(itemName);
 
           itemsList.push(itemName);
 
@@ -35,33 +32,52 @@ jQuery(document).ready(function($) {
             _this.afficheList();
           });
 
-          // Pour effacer un article --> ne fonctionne pas
-          $( ".article" ).on( "click", function(e) {
+          // Pour effacer un article
+          $( ".liste-course" ).on( "click", ".article",  function(e) {
             e.preventDefault();
             //console.log( $( this ).text() );
-            console.log("ok test");
-            alert("ok test");
+            $( this ).fadeOut();
           });
-
        }
 
       this.afficheList = function (){
-
           $.each( itemsList, function( i, val ) {
           console.log( i+": " + val );
           var elt = $(this);
-          elt = '<li ><a href="#" class="article">'+ val +'</a></li>';
+          elt = '<li class="article">'+ val +'</li>';
           $('.liste-course').append(elt);
 
           // On vide le tableau pour permettre des ajouts ultérieurs sans doublons
           return ( itemsList = [] );
-        });
-       }
+         });
+
+          // TODO pour améliorer, créer dynamiquement le ul.liste-course
+
+        /*if ($(".liste-course")) { // Si le ul existe déjà
+          $.each( itemsList, function( i, val ) {
+            console.log( i+": " + val );
+            var elt = $(this);
+            elt = '<li class="article">'+ val +'</li>';
+            $('.liste-course').append(elt);
+           });
+        }
+
+        else{
+
+          $('.liste-course-title').after('<ul class="liste-course"><ul>'); // Sinon on le créer
+          $.each( itemsList, function( i, val ) {
+            console.log( i+": " + val );
+            var elt = $(this);
+            elt = '<li class="article">'+ val +'</li>';
+            $('.liste-course').append(elt);
+           });
+
+        }*/
+
+      }
 
        this.debug = function(){
-        // var art = $( ".article" );
-        //     console.log( art.text() );
-          $(".article").trigger('click');
+          //$(".article").trigger('click');
        }
   }
 
