@@ -16,6 +16,8 @@ CBC_manageListCourses = {
     },
 
     manageEvents: function () {
+        
+        //var manageEventsScope = this; // Same as var _this = this;
 
         $("form").submit(function(e){
           e.preventDefault();
@@ -24,7 +26,7 @@ CBC_manageListCourses = {
           s.itemsList.push(s.itemName);
 
           // Décommenter pour afficher au fur et à mesure
-          //this.afficheList();
+          CBC_manageListCourses.afficheList();
 
           // Vide le champs pour faciliter les nouveaux ajouts
           //$("#input").val("");
@@ -44,7 +46,7 @@ CBC_manageListCourses = {
           // Un bouton pour mettre à jour la liste avec les derniers ajouts
           $("#uppdate-to-buy").on('click', function(e) {
             e.preventDefault();
-            this.afficheList();
+            CBC_manageListCourses.afficheList();
           });
 
           // Pour effacer un article
