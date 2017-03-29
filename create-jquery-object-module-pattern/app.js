@@ -19,6 +19,7 @@ CBC_manageListCourses = {
 
         $("form").submit(function(e){
           e.preventDefault();
+          e.stopPropagation();
           s.itemName=$('#input').val();
           s.itemsList.push(s.itemName);
 
