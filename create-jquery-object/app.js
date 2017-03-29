@@ -2,9 +2,7 @@ jQuery(document).ready(function($) {
 
   function listeDeCourses(){
 
-    var $listArticle; // Useless ?
     var itemName;
-    var $addedItem; // Useless ?
     var itemsList = []
 
        this.manageEvents = function(){
@@ -14,12 +12,10 @@ jQuery(document).ready(function($) {
           e.preventDefault();
           itemName=$('#input').val();
 
-          // $addedItem = $("<li class='article'></li>").text(itemName);
-
           itemsList.push(itemName);
 
           // Décommenter pour afficher au fur et à mesure
-          // _this.afficheList();
+          _this.afficheList();
 
           // Vide le champs pour faciliter les nouveaux ajouts
           $("#input").val("");
@@ -36,20 +32,23 @@ jQuery(document).ready(function($) {
           });
 
           // Pour effacer un article --> ne fonctionne pas
-          $( ".article" ).on( "click", function() {
-            //e.preventDefault();
+          $( ".article" ).on( "click", function(e) {
+            e.preventDefault();
             //console.log( $( this ).text() );
             console.log("ok test");
+            alert("ok test");
           });
+
        }
 
-       this.afficheList = function (){
-          // Affiche la liste
+      this.afficheList = function (){
+
           $('.liste-course').append($listArticle);
           $.each( itemsList, function( i, val ) {
           console.log( i+": " + val );
-
-          $("<li class='article'></li>").text(val).appendTo('.liste-course');
+          var elt = $(this);
+          elt = '<li ><a href="#" class="article">'+ val +'</a></li>';
+          $('.liste-course').append(elt);
 
           // On vide le tableau pour permettre des ajouts ultérieurs sans doublons
           return ( itemsList = [] );
@@ -59,6 +58,7 @@ jQuery(document).ready(function($) {
        this.debug = function(){
         // var art = $( ".article" );
         //     console.log( art.text() );
+          $(".article").trigger('click');
        }
   }
 
