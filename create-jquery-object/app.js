@@ -2,7 +2,9 @@ jQuery(document).ready(function($) {
 
   function listeDeCourses(){
 
+
     var itemName;
+    //var $addedItem; // Useless ?
     var itemsList = []
 
        this.manageEvents = function(){
@@ -11,6 +13,8 @@ jQuery(document).ready(function($) {
         $("form").submit(function(e){
           e.preventDefault();
           itemName=$('#input').val();
+
+          // $addedItem = $("<li class='article'></li>").text(itemName);
 
           itemsList.push(itemName);
 
@@ -43,7 +47,6 @@ jQuery(document).ready(function($) {
 
       this.afficheList = function (){
 
-          $('.liste-course').append($listArticle);
           $.each( itemsList, function( i, val ) {
           console.log( i+": " + val );
           var elt = $(this);
