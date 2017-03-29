@@ -33,7 +33,7 @@ CBC_manageListCourses = {
           console.log(s.itemName);
             
           // change the input size with long animate
-          $('#input').stop(true,true).animate({
+          $('#input').stop(true, false).animate({
            "width" : "+=15"
           }, 5000, function() {
             console.info( 'animate finished.' );
