@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
           itemsList.push(itemName);
 
           // Décommenter pour afficher au fur et à mesure
-          _this.afficheList();
+          //_this.afficheList();
 
           // Vide le champs pour faciliter les nouveaux ajouts
           $("#input").val("");
