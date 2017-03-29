@@ -1,35 +1,38 @@
 jQuery(document).ready(function($) {
 
-  function listeDeCourse(){
+  function listeDeCourses(){
 
-    var $listArticle;
+    var $listArticle; // Useless ?
+    var itemName;
+    var $addedItem; // Useless ?
+    var itemsList = []
 
        this.manageEvents = function(){
 
         var _this = this;
         $("form").submit(function(e){
           e.preventDefault();
-          var itemName=$('#input').val();
+          itemName=$('#input').val();
 
-          var $addedItem = $("<li class='article'></li>").text(itemName);
-          console.log(itemName);
-          //$listArticle +=  $addedItem ;
+          // $addedItem = $("<li class='article'></li>").text(itemName);
 
-          $('.liste-course').append($addedItem);
+          // Pour afficher au fur et à mesure
+          // _this.afficheToutDeSuite();
+
+          itemsList.push(itemName);
 
           // Vide le champs pour faciliter les nouveaux ajouts
           $("#input").val("");
 
-          //return $listArticle
+          //return $addedItem
+          console.log(itemsList);
 
         });
 
         // Un bouton pour mettre à jour la liste avec les derniers ajouts
         $("#uppdate-to-buy").on('click', function(e) {
           e.preventDefault();
-          //$( ".liste-course li" ).clone().appendTo( ".achat-course " );
           _this.afficheList();
-
         });
 
           // Pour effacer un article --> ne fonctionne pas
@@ -39,10 +42,21 @@ jQuery(document).ready(function($) {
           });
        }
 
+       this.afficheToutDeSuite = function(){
+        $('.liste-course').append($addedItem);
+       }
+
        this.afficheList = function (){
           // Affiche la liste
-          //$('.liste-course').append($listArticle);
-          console.log($listArticle);
+          $('.liste-course').append($listArticle);
+          $.each( itemsList, function( i, val ) {
+          console.log( i+": " + val );
+
+          $("<li class='article'></li>").text(val).appendTo('.liste-course');
+
+          // On vide le tableau
+          return ( itemsList = [] );
+        });
        }
 
        this.debug = function(){
@@ -51,7 +65,7 @@ jQuery(document).ready(function($) {
        }
   }
 
-  window.CBCSCRIPTS_manageListCourse = new listeDeCourse();
+  window.CBCSCRIPTS_manageListCourse = new listeDeCourses();
   window.CBCSCRIPTS_manageListCourse.manageEvents();
 
 });
