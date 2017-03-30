@@ -89,7 +89,7 @@ CBC_manageListCourses = {
         });
     },
 
-    compteNombreArticleAffiche: function (callback){
+    compteNombreArticleAffiche: function (){
       var nBListElt = $('.liste-courses li').length ;
       var text = (nBListElt>1) ? 'affichés' : ' affiché';
       console.log("Il y a "+ nBListElt +" article"+((nBListElt>1)?'s':'')+" affiché"+((nBListElt>1)?'s':'')+" dans la liste"); // examples of ternary condition use
