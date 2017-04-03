@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>JS training - Manipulations AJAX</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	<div class="container">
+		<h1 class="text-center">Manipulations AJAX</h1>
+		<hr />
+		<p class="lead"><strong>Description</strong> : Récupérer id et titre des articles de l'url <a href="https://www.jeuneafrique.com/api/business/v1.0/homepage/">https://www.jeuneafrique.com/api/business/v1.0/homepage/</a> pour les afficher dans une liste. Un bouton devra déclencher la mise à jour. Enfin prévoir un deuxième bouton interrogeant un autre flux, mais on ne doit pas pourvoir le déclancher si le 1er est toujours en court... (promise ect.)</p>
+		<hr />
+		<h2>Résultat</h2>
+		<div id="result-ajax">
+
+		</div>
+		<hr />
+		<p><a id="my-action-btn" class="btn btn-success">Chargement des articles</a></p>
+	</div>
+
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+		<script src="app.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	</body>
+</html>
+
