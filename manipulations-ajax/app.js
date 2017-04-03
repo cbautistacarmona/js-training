@@ -63,7 +63,7 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
           $("#my-action-btn").on('click', function(e) {
             e.preventDefault();
 
-            privates.getArticleJA_2();
+            publics.getArticleJA_2();
           });
     }
 
