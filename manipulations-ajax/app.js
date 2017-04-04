@@ -28,8 +28,8 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
         }
       });
 
+      // Ci-dessous exemple avec les promises (done, fail, always)
       request.done(function(response) {
-
         var items = [];
           $.each( response.data.posts, function(i, post){
               var title = post.title;
