@@ -10,38 +10,59 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
 
     /* Attributs / Fonctions privées */
 
-    /* ... */
+    // ... //
+
 
     /* Attributs / Fonctions publiques */
 
     publics.getArticleJA = function(){
-
+      var url = 'https://www.jeuneafrique.com/api/business/v1.0/homepage/';
+      var textBtnAction = $("#my-action-btn").text();
       var request = $.ajax({
-        url: "https://www.jeuneafrique.com/api/business/v1.0/homepage/",
+        url: url,
         method: "GET",
-        //: data,
         dataType: "json",
-        success: function(result){
-          console.log(result);
-        },
-        error: function(result, statut, erreur){
-
-          console.error("Erreur : responseText: "+result.responseText)
-
-        },
-        complete:  function(result, statut, erreur){
-           console.log("Terminé !")
+        cache: true,
+        beforeSend: function() {
+          $("#my-action-btn").text('Chargement'); // On indique sur le bouton que le chargement est en cours
         }
+      });
+
+      request.done(function(response) {
+
+        var items = [];
+          $.each( response.data.posts, function(i, post){
+              var title = post.title;
+              var artId = post.id;
+              console.log(i , post);
+              items.push("<li id='article_"+ i +"'><h4>"+title+"</b> - <small>"+ artId +"</small></h4></li>");
+          });
+          $( "<ul/>", {
+          "class": "my-new-list",
+          html: items.join( "" )
+          }).appendTo( "#result-ajax" );
+
+      });
+
+      request.fail(function( jqXHR, textStatus ) {
+        console.error( "Request failed: " + textStatus );
+      });
+
+      request.always(function() {
+          console.log( "complete" );
+          $("#my-action-btn").text(textBtnAction); // Quel que soit le résultat (done ou fail) on remet le texte initial du bouton
       });
     }
 
+    // Variante avec methode getJSON
     publics.getArticleJA_2 = function(){
-      $.getJSON("https://www.jeuneafrique.com/api/business/v1.0/homepage/", function( data ){
+      $.getJSON("https://www.jeuneafrique.com/api/business/v1.0/homepage/", function( response ){
           var items = [];
-          $.each( data, function(key, value){
-            // var title = data.posts[i].title;
-            // var artId = data.posts[i].id;
-            items.push("<li id='article_"+ key +"'>"+key+" :"+ value +"</li>");
+          $.each( response.data.posts, function(i, post){
+              var title = post.title;
+              var artId = post.id;
+              console.log(i , post);
+              items.push("<li id='article_"+ i +"'><h4>"+title+"</b> - <small>"+ artId +"</small></h4></li>");
           });
           $( "<ul/>", {
           "class": "my-new-list",
@@ -50,27 +71,19 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
       });
     }
 
-
-    // publics.displayArticleJA = function(){
-    //   $("#result-ajax").append(request.statut);
-
-
-    // }
-
     publics.manageEvents = function(){
 
           // Click event on id element
           $("#my-action-btn").on('click', function(e) {
             e.preventDefault();
 
-            publics.getArticleJA_2();
+            publics.getArticleJA();
           });
     }
 
     publics.init = function () {
       website.manageEvents();
-     // website.getArticleJA_2();
-        // Le code ici sera exécutable via « website.init() ».
+      // Le code ici sera exécutable via « website.init() ».
     };
 }(website));
 
