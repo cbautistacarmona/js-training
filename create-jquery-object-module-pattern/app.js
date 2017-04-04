@@ -10,9 +10,11 @@ CBC_manageListCourses = {
 
     version : 1.0,
 
+
     init: function () {
-      s = this.settings;
       this.manageEvents();
+      s = this.settings;
+
       //this.afficheList();
       //this.debug();
     },

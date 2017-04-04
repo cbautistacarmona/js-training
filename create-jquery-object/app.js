@@ -4,11 +4,12 @@ jQuery(document).ready(function($) {
   function listeDeCourses(){
 
     var itemName;
-    var itemsList = []
+    var itemsList = [];
+    var _root = this;
 
        this.manageEvents = function(){
 
-        var _this = this;
+        //var _this = this;
         $("form").submit(function(e){
           e.preventDefault();
           itemName=$('#input').val();
@@ -16,7 +17,7 @@ jQuery(document).ready(function($) {
           itemsList.push(itemName);
 
           // Décommenter pour afficher au fur et à mesure
-          //_this.afficheList();
+          //_root.afficheList();
 
           // Vide le champs pour faciliter les nouveaux ajouts
           $("#input").val("");
@@ -29,7 +30,7 @@ jQuery(document).ready(function($) {
           // Un bouton pour mettre à jour la liste avec les derniers ajouts
           $("#uppdate-to-buy").on('click', function(e) {
             e.preventDefault();
-            _this.afficheList();
+            _root.afficheList();
           });
 
           // Pour effacer un article
