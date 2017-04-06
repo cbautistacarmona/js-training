@@ -8,7 +8,16 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+		<style>
+			.btn i {
+				display: none;
+			}
+			.btn.disabled i {
+				display: inline;
+			}
+		</style>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -22,12 +31,35 @@
 		<hr />
 		<p class="lead"><strong>Description</strong> : Récupérer id et titre des articles de l'url <a href="https://www.jeuneafrique.com/api/business/v1.0/homepage/">https://www.jeuneafrique.com/api/business/v1.0/homepage/</a> pour les afficher dans une liste. Un bouton devra déclencher la mise à jour. Enfin prévoir un deuxième bouton interrogeant un autre flux, mais on ne doit pas pourvoir le déclancher si le 1er est toujours en court... (promise ect.)</p>
 		<hr />
-		<h2>Résultat</h2>
-		<div id="result-ajax">
+		<section class="resultats row">
+			<div id="result-ajax-1" class="col-sm-6">
+				<h2>Résultat flux 1</h2>
+				<div class="result-ajax-body">
 
-		</div>
-		<hr />
-		<p><a id="my-action-btn" class="btn btn-success">Charger les articles</a></p>
+				</div>
+				<hr />
+				<p>
+					<button class="btn btn-success">
+						<i class="fa fa-circle-o-notch fa-spin"></i>
+						<span class="my-action-text" >Charger les articles</span>
+					</button>
+				</p>
+			</div>
+
+			<div id="result-ajax-2" class="col-sm-6">
+				<h2>Résultat flux 2</h2>
+				<div class="result-ajax-body">
+
+				</div>
+				<hr />
+				<p>
+					<button class="btn btn-success">
+						<i class="fa fa-circle-o-notch fa-spin"></i>
+						<span class="my-action-text" >Charger les articles</span>
+					</button>
+				</p>
+			</div>
+		</section>
 	</div>
 
 		<!-- jQuery -->
