@@ -19,8 +19,8 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
       var url = 'https://www.jeuneafrique.com/api/business/v1.0/homepage/';
       var $fluxContainer = $("#result-ajax-1");
       var $resultDiv = $fluxContainer.find(' .result-ajax-body');
-      var $btn = $resultDiv.find('.btn');
-      var $btnSpan = $resultDiv.find('.btn .my-action-text');
+      var $btn = $fluxContainer.find('.btn');
+      var $btnSpan = $btn.find('.my-action-text');
       var $textBtn = $btnSpan.text();
       var request = $.ajax({
         url: url,
@@ -28,8 +28,8 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
         dataType: "json",
         cache: true,
         beforeSend: function() {
-          $resultDiv.find($btn).addClass('disabled');
-          $resultDiv.find($btnSpan).text('Chargement'); // On indique sur le bouton que le chargement est en cours
+          $btn.addClass('disabled');
+          $btnSpan.text('Chargement'); // On indique sur le bouton que le chargement est en cours
         }
       });
 
@@ -61,14 +61,18 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
       });
     }
 
-
+    /*publics.btnLoading = function(e){
+      var $btn  = e.target;
+      $btn.addClass('disabled');
+      $btn.find('.my-action-text').text('Chargement');
+    }*/
 
     publics.getArticleGrandParis = function(){
       var url = 'https://www.lejournaldugrandparis.fr/wp-json/wp/v2/posts';
       var $fluxContainer = $("#result-ajax-2");
       var $resultDiv = $fluxContainer.find(' .result-ajax-body');
-      var $btn = $resultDiv.find('.btn');
-      var $btnSpan = $resultDiv.find('.btn .my-action-text');
+      var $btn = $fluxContainer.find('.btn');
+      var $btnSpan = $fluxContainer.find('.btn .my-action-text');
       var $textBtn = $btnSpan.text();
       var request = $.ajax({
         url: url,
@@ -76,8 +80,8 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
         dataType: "json",
         cache: true,
         beforeSend: function() {
-          $resultDiv.find($btn).addClass('disabled');
-          $resultDiv.find($btnSpan).text('Chargement'); // On indique sur le bouton que le chargement est en cours
+          $btn.addClass('disabled');
+          $btnSpan.text('Chargement'); // On indique sur le bouton que le chargement est en cours
         }
       });
 
@@ -86,7 +90,7 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
         console.log(response);
         var items = [];
           $.each( response, function(i, post){
-              var title = post.links;
+              var title = post.title.rendered;
               var artId = post.id;
               console.log(i , post);
               items.push("<li id='article_"+ i +"'><h4>"+title+"</b> - <small>"+ artId +"</small></h4></li>");
