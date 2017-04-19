@@ -33,7 +33,8 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
         }
       });
 
-      // Ci-dessous exemple avec les promises (done, fail, always)
+      // Ci-dessous exemple avec les promises (done, fail, always, then)
+
       request.done(function(response) {
         var items = [];
           $.each( response.data.posts, function(i, post){
@@ -43,10 +44,10 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
               items.push("<li id='article_"+ i +"'><h4>"+title+"</b> - <small>"+ artId +"</small></h4></li>");
           });
           $( "<ul/>", {
-          "class": "my-new-list",
+          "class": "result-list",
           html: items.join( "" )
           }).appendTo( $resultDiv );
-
+          console.log('Done')
       });
 
       request.fail(function( jqXHR, textStatus ) {
@@ -54,12 +55,19 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
       });
 
       request.always(function() {
-          console.log( "complete" );
+          console.log( "always" );
           // Quel que soit le résultat (done ou fail) on remet l'état initial du bouton
           $btn.removeClass('disabled');
           $btnSpan.text($textBtn);
       });
+
+      request.then(function(){
+        console.log('then');
+        }
+      );
     }
+
+
 
     /*publics.btnLoading = function(e){
       var $btn  = e.target;
@@ -96,7 +104,7 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
               items.push("<li id='article_"+ i +"'><h4>"+title+"</b> - <small>"+ artId +"</small></h4></li>");
           });
           $( "<ul/>", {
-          "class": "my-new-list",
+          "class": "result-list",
           html: items.join( "" )
           }).appendTo( $resultDiv );
 
@@ -138,6 +146,7 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
             e.preventDefault();
 
             publics.getArticleJA();
+
           });
 
           $("#result-ajax-2").on('click', '.btn', function(e) {
