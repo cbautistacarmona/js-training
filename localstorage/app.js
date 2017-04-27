@@ -22,10 +22,7 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
 
       userGender: null,
 
-      expiration_days: "3",
-
-      // Consent box template:
-      //my_template: function(){ return '<div class="some-class"><div class="container"><p>'+ this.option1 +'<br>'+ this.option2 +'</p></div>' },
+      expiration_days: "3"
 
     };
 
@@ -44,8 +41,27 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
       // Le code ici sera exécutable via « website.init() ».
     };
 
-    publics.doSomething = function(){
+    publics.customiseForGender = function(){
+         if (localStorage.userGender == 'male'){
+            $('body').css({
+              color: '#fff',
+              backgroundColor: '#41cdf4'
+            })
+          }
 
+          if (localStorage.userGender == 'female'){
+            $('body').css({
+              color: '#333',
+              backgroundColor: '#f9e0f7'
+            })
+          }
+
+          if (localStorage.userGender == 'nocomment'){
+            $('body').css({
+              color: '#333',
+              backgroundColor: '#c5f442'
+            })
+          }
     }
 
 
@@ -55,10 +71,29 @@ var website = website || {}; // Si « website » a déjà été crée dans un pr
           e.preventDefault();
           settings.userGender = $('input[type=radio][name=userGender]:checked').val();
 
+          localStorage.setItem("userGender", settings.userGender);
+
           //return userGender;
           console.log(settings.userGender);
+          publics.customiseForGender();
 
         });
+
+        $("#btn-reset").on('click', function(e) {
+            e.preventDefault();
+            localStorage.clear();
+            $('body').css({
+              color: 'inherit',
+              backgroundColor: 'inherit'
+            })
+
+          });
+
+
+
+      $(window).on("load", function(){
+        publics.customiseForGender();
+      });
     }
 
 }(website));
