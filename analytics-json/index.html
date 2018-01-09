@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title of the exercice</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	<div class="container">
+		<h1 class="text-center">JA event Analytics via Json dans data attibute</h1>
+		<hr />
+		<p class="lead"><strong>Description</strong> : lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. Phasellus vel massa efficitur, accumsan quam vitae, porta ligula. Fusce convallis ultricies ex, eget fermentum libero eleifend eget. Vivamus at diam aliquam, elementum nunc at, <a href="http://www.google.fr" class="tracking-click-evt-ga_v2" data-ga_analytics='{"events":[{"click": {"category": "rubrique machin 1","label": "mon super lien 1"}}]}'>MON SUPER LIEN</a>. Aenean et felis id felis volutpat aliquam et at tortor. Phasellus fermentum dictum tincidunt. <a href="http://www.google.fr" class="tracking-click-evt-ga_v2" data-ga_analytics='{"events":[{"click": {"category": "rubrique machin 2","label": "mon super lien 12"}}]}'>MON SUPER LIEN 2</a> Phasellus auctor diam metus, vitae tristique arcu gravida et.</p>
+
+		<hr />
+		<h2 >Le JSON</h2>
+		<pre>
+			{
+			"events": [{
+					"click": {
+						"category": "tralala",
+						"label": "qsdfqsdf"
+					}
+				}]
+			}
+		</pre>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. </p>
+		<hr />
+		<p><button type="submit" id="my-action-btn" value="" class="btn btn-success">Do Some Stuff</button></p>
+	</div>
+
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+		<script src="app.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	</body>
+</html>
+
