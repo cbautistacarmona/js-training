@@ -20,13 +20,13 @@
 	<div class="container">
 		<h1 class="text-center">JA event Analytics via Json dans data attibute</h1>
 		<hr />
-		<p class="lead"><strong>Description</strong> : lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. Phasellus vel massa efficitur, accumsan quam vitae, porta ligula. Fusce convallis ultricies ex, eget fermentum libero eleifend eget. Vivamus at diam aliquam, elementum nunc at, <a href="http://www.google.fr" class="tracking-click-evt-ga_v2" data-ga_analytics='{"events":[{"click": {"category": "rubrique machin 1","label": "mon super lien 1"}}]}'>MON SUPER LIEN</a>. Aenean et felis id felis volutpat aliquam et at tortor. Phasellus fermentum dictum tincidunt. <a href="http://www.google.fr" class="tracking-click-evt-ga_v2" data-ga_analytics='{"events":[{"click": {"category": "rubrique machin 2","label": "mon super lien 12"}}]}'>MON SUPER LIEN 2</a> Phasellus auctor diam metus, vitae tristique arcu gravida et.</p>
+		<p class="lead"><strong>Description</strong> : lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. Phasellus vel massa efficitur, accumsan quam vitae, porta ligula. Fusce convallis ultricies ex, eget fermentum libero eleifend eget. Vivamus at diam aliquam, elementum nunc at, <a href="http://www.google.fr" class="tracking-click-evt-ga_v2" data-ga_analytics='{"events":{"click": {"category": "rubrique machin 1","label": "mon super lien 1"}}}'>MON SUPER LIEN</a>. Aenean et felis id felis volutpat aliquam et at tortor. Phasellus fermentum dictum tincidunt. <a href="http://www.google.fr" class="tracking-click-evt-ga_v2" data-ga_analytics='{"events":{"click": {"category": "rubrique machin 2","label": "mon super lien 12"}}}'>MON SUPER LIEN 2</a> Phasellus auctor diam metus, vitae tristique arcu gravida et.</p>
 
 		<hr />
 		<h2 >Le JSON</h2>
 		<pre>
 			{
-			"events": [{
+			"events": {
 					"click": {
 						"category": "ma catégorie 1",
 						"label": "Label 1"
@@ -35,7 +35,7 @@
 						"category": "ma catégorie 1",
 						"label": "Label 1"
 					}
-				}],
+				},
 			"campaign": {
 				"tm_source": "jeuneafrique.com",
 				"tm_campaign": "promo_site_2018"
@@ -45,7 +45,7 @@
 		</pre>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. </p>
 		<hr />
-		<p><button type="submit" id="my-action-btn" value="" class="btn btn-success tracking-click-evt-ga_v2 visible-xs" data-ga_analytics='{"events":[{"click": {"category": "rubrique machin 13","label": "mon super lien 1"},"touchstart": {"category": "rubrique machin 13","label": "mon super lien 1 sous mobile"}}]}'>Do Some Stuff</button>
+		<p><button type="submit" id="my-action-btn" value="" class="btn btn-success tracking-click-evt-ga_v2 visible-xs" data-ga_analytics='{"events": {"click": {"category": "rubrique machin 13", "label": "mon super lien 1"}, "touchstart": { "category": "rubrique machin 13", "label": "mon super lien 1 sous mobile"}}}'>Do Some Stuff</button>
 		</p>
 	</div>
 

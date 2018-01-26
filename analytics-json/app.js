@@ -6,7 +6,8 @@ var JA_GaEventTracking = JA_GaEventTracking || {}; // Si Â« JA_GaEventTracking Â
 
       // Options
       var settings = {
-        version: "_v2" // Ne pas modifier
+        version: "_v2", // Ne pas modifier
+        prevent_click_sending_tracking: null
       }
 
 
@@ -46,16 +47,30 @@ var JA_GaEventTracking = JA_GaEventTracking || {}; // Si Â« JA_GaEventTracking Â
 
       publics.is_GA_data_complete = function(){
         //data = $(this).data("ga_analytics");
-          if($(this).data("ga_analytics").length > 0){
+          if($(this).hasAttribute("data-ga_analytics")){
+            console.log('TTRRRUE');
             return true
           }
           else{
+            console.log('FALSE');
             return false
           }
       }
 
-      publics.sendGAEvent = function(){
+     /*publics.sendGAEvent = function(category, typeEvent, label){
         //return ga('send', 'event', category, 'click', label);
+        //return ga('send', 'event', category, typeEvent, label);
+        //console.log(category+' '+typeEvent+' '+label);
+
+         console.log("Mon event :  "+typeEvent+", ma catÃ©gorie : "+category+' et le label : '+label);
+      }*/
+
+      publics.sendGAEvent = function(category, typeEvent, label){
+        //return ga('send', 'event', category, 'click', label);
+        //return ga('send', 'event', category, typeEvent, label);
+        console.log(category+' '+typeEvent+' '+label);
+
+
       }
 
       // All events
@@ -68,26 +83,29 @@ var JA_GaEventTracking = JA_GaEventTracking || {}; // Si Â« JA_GaEventTracking Â
 
           $(this).on('touchstart click', '.tracking-click-evt-ga'+settings.version, function(e){
           var data = $(this).data("ga_analytics");
-          //var data = JSON.parse(json);
 
-              //if( publics.is_GA_data_complete() == true){
-              //
-              if(e.type === "touchstart") {
-                      console.log("Nom event : TOUCHSTART");
-                      console.log("Ma cat  : "+data.events[1].click['category']);
-                      console.log("Mon Label  : "+data.events[1].click['label']);
-                      console.log('B');
+              if(e.type == "touchstart") {
+                  if( data.events.touchstart !== undefined ){
+                      var category = data.events.touchstart['category'];
+                      var label = data.events.touchstart['label'];
+                      console.log('Sending tap GA event');
+                      settings.prevent_click_sending_tracking = true; // prevent from sending twice GA Event
+                      publics.sendGAEvent(category, 'tap', label);
+                  }
 
-              } else if(e.type === "click") {
-                   //console.log("Nom event : "+data.events[0]);
-                      console.log("Nom event : CLICK");
-                      console.log("Ma cat  : "+data.events[0].click['category']);
-                      console.log("Mon Label  : "+data.events[0].click['label']);
-                      console.log('A');
+              } else if(e.type == "click") {
+
+                  if(settings.prevent_click_sending_tracking !== true){
+                    if( data.events.click  !== undefined ){
+                      var category = data.events.click['category'];
+                      var label = data.events.click['label'];
+
+                      console.log('Sending click GA event');
+                      publics.sendGAEvent(category, 'click', label);
+                    }
+                  }
               }
 
-
-              //}
           });
 
 
