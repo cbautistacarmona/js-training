@@ -68,11 +68,24 @@ var JA_GaEventTracking = JA_GaEventTracking || {}; // Si Â« JA_GaEventTracking Â
 
           $(this).on('touchstart click', '.tracking-click-evt-ga'+settings.version, function(e){
           var data = $(this).data("ga_analytics");
+          //var data = JSON.parse(json);
 
               //if( publics.is_GA_data_complete() == true){
-                      console.log("Nom event : "+data.events[0].click );
+              //
+              if(e.type === "touchstart") {
+                      console.log("Nom event : TOUCHSTART");
+                      console.log("Ma cat  : "+data.events[1].click['category']);
+                      console.log("Mon Label  : "+data.events[1].click['label']);
+                      console.log('B');
+
+              } else if(e.type === "click") {
+                   //console.log("Nom event : "+data.events[0]);
+                      console.log("Nom event : CLICK");
                       console.log("Ma cat  : "+data.events[0].click['category']);
                       console.log("Mon Label  : "+data.events[0].click['label']);
+                      console.log('A');
+              }
+
 
               //}
           });
