@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title of the exercice</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+
+/*carrousel*/
+#carrousel {
+	width:600px;
+	height:400px;
+	margin: 0 auto;
+	position:relative;
+	overflow:hidden;
+}
+
+.slide {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:600px;
+	height:400px;
+}
+
+.carrousel-picto{
+	position:absolute;
+	left:45%;
+	bottom:50px;
+	padding:0px;
+	margin:0px;
+}
+
+.carrousel-picto li{
+	display:inline-block;
+	background-color:#ffffff;
+	border-radius:50%;
+	width:10px;
+	height:10px;
+	margin:6px;
+	cursor:pointer;
+
+}
+.carrousel-picto span{display: block;color: transparent;}
+.carrousel-picto li:hover, .carrousel-picto li.active{background-color:#2980b9;}
+
+#carrousel-nav .prev{
+	width:54px;
+	height:54px;
+	background-image:url('https://dummyimage.com/54/ff0000/ffffff');
+	top:45%;
+	left: 10%;
+    position: absolute;
+	cursor:pointer;
+	opacity:0.8;
+}
+#carrousel-nav .next{
+	width:54px;
+	height:54px;
+	background-image:url('https://dummyimage.com/54/ff0000/ffffff');
+	top:45%;
+	right: 10%;
+    position: absolute;
+	cursor:pointer;
+	opacity:0.8;
+}
+
+#carrousel-nav .prev:hover,#carrousel-nav .next:hover {opacity: 1;}
+</style>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<script type="text/javascript">
+		/*window._taboola = window._taboola || [];
+		_taboola.push({article:'auto'});
+		!function (e, f, u, i) {
+		if (!document.getElementById(i)){
+		e.async = 1;
+		e.src = u;
+		e.id = i;
+		f.parentNode.insertBefore(e, f);
+		}
+		}(document.createElement('script'),
+		document.getElementsByTagName('script')[0],
+		'//cdn.taboola.com/libtrc/jeuneafrique-jeuneafrique/loader.js',
+		'tb_loader_script');
+		if(window.performance && typeof window.performance.mark == 'function') {window.performance.mark('tbl_ic');}*/
+		</script>
+	</head>
+	<body>
+	<div class="container" id="js-taboola-below-article-thumbnails__container">
+		<h1 class="text-center">Title of the exercice</h1>
+		<hr />
+		<p class="lead"><strong>Description</strong> : lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. Phasellus vel massa efficitur, accumsan quam vitae, porta ligula. Fusce convallis ultricies ex, eget fermentum libero eleifend eget. Vivamus at diam aliquam, elementum nunc at, ultricies tellus. Aenean et felis id felis volutpat aliquam et at tortor. Phasellus fermentum dictum tincidunt. Phasellus auctor diam metus, vitae tristique arcu gravida et.</p>
+		<hr />
+		<h2 >Level 2 title</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. </p>
+		<hr />
+
+			<div id="carrousel">
+				<div id="slide1" class="slide">
+					<div class="visu">fvfv<img src="https://dummyimage.com/600x400/000/fff" alt="Slide1"></div>
+				</div>
+				<div id="slide2" class="slide"><div class="visu">vfdqfv<img src="https://dummyimage.com/600x400/9c579c/ffffff" alt="Slide2"></div></div>
+				<div id="slide3" class="slide"><div class="visu">vvvdd<img src="https://dummyimage.com/600x400/318f31/ffffff" alt="Slide3"></div></div>
+				<div id="carrousel-nav">
+					<div class="prev"></div>
+					<div class="next"></div>
+				</div>
+			</div>
+
+
+
+	</div>
+
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+		<script src="app2.js"></script>
+
+		<script>
+			/*var itc_carrousel = {
+
+			nbSlide : 0,
+			nbCurrent : 1,
+			elemCurrent : null,
+			elem : null,
+			timer : null,
+
+			init : function(elem){
+				this.nbSlide = elem.find(".slide").length;
+
+				//creation pagination
+				elem.append('<div class="carrousel-picto"></div>');
+				for(var i=1;i<=this.nbSlide;i++){
+					elem.find(".carrousel-picto").append("<li><span>"+i+"</span></li>");
+				}
+
+				// au click goto slide correspondant
+				elem.find(".carrousel-picto span").click(function(){
+					itc_carrousel.gotoSlide($(this).text());
+				});
+
+				//au click prev
+				elem.find("#carrousel-nav .prev").click(function(){
+					itc_carrousel.prev();
+				});
+
+				//au click next
+				elem.find("#carrousel-nav .next").click(function(){
+					itc_carrousel.next();
+				});
+
+				//initialisation du carrousel
+				this.elem = elem;
+				elem.find(".slide").hide();
+				elem.find(".slide:first").show();
+				this.elemCurrent = elem.find(".slide:first");
+				this.elem.find(".carrousel-picto li:first").addClass("active");
+
+				//créer timer
+				itc_carrousel.play();
+
+				//arret au survol du carrousel
+				elem.mouseover(itc_carrousel.stop);
+				elem.mouseout(itc_carrousel.play);
+
+			},
+
+			gotoSlide : function(num){
+
+				if(num == this.nbCurrent){return false;}
+
+
+				var sens = 1;
+					if(num<this.nbCurrent){sens = -1;}
+				var cssDepart = {"left":sens*this.elem.width()};
+				var cssFin = {"left":sens*-this.elem.width()};
+				this.elem.find("#slide"+num).show().css(cssDepart);
+
+				this.elem.find("#slide"+num).animate({"top":0,"left":0},500);
+				this.elemCurrent.animate(cssFin,500);
+
+				this.elem.find(".carrousel-picto li").removeClass("active");
+				this.elem.find(".carrousel-picto li:eq("+(num-1)+")").addClass("active");
+				this.nbCurrent = num;
+				this.elemCurrent = this.elem.find("#slide"+num);
+			},
+
+			next : function(){
+				var num = this.nbCurrent+1;
+				if(num > this.nbSlide){
+					num = 1;
+				}
+				this.gotoSlide(num);
+			},
+			prev : function(){
+				var num = this.nbCurrent-1;
+				if(num <1){
+					num = this.nbSlide;
+				}
+				this.gotoSlide(num);
+			},
+			stop :function(){
+				window.clearInterval(itc_carrousel.timer);
+			},
+			play : function(){
+				window.clearInterval(itc_carrousel.timer);
+				itc_carrousel.timer = window.setInterval("carrousel.next()",5000);
+			}
+
+		}*/
+
+		$(function(){
+			//itc_carrousel.init($("#carrousel"));
+		});
+		</script>
+		<!-- Bootstrap JavaScript -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+		<script type="text/javascript">
+		/*window._taboola = window._taboola || [];
+		_taboola.push({flush: true});*/
+		</script>
+	</body>
+</html>
+

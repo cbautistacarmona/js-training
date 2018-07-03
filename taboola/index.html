@@ -15,9 +15,25 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<script type="text/javascript">
+		/*window._taboola = window._taboola || [];
+		_taboola.push({article:'auto'});
+		!function (e, f, u, i) {
+		if (!document.getElementById(i)){
+		e.async = 1;
+		e.src = u;
+		e.id = i;
+		f.parentNode.insertBefore(e, f);
+		}
+		}(document.createElement('script'),
+		document.getElementsByTagName('script')[0],
+		'//cdn.taboola.com/libtrc/jeuneafrique-jeuneafrique/loader.js',
+		'tb_loader_script');
+		if(window.performance && typeof window.performance.mark == 'function') {window.performance.mark('tbl_ic');}*/
+		</script>
 	</head>
 	<body>
-	<div class="container">
+	<div class="container" id="js-taboola-below-article-thumbnails__container">
 		<h1 class="text-center">Title of the exercice</h1>
 		<hr />
 		<p class="lead"><strong>Description</strong> : lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. Phasellus vel massa efficitur, accumsan quam vitae, porta ligula. Fusce convallis ultricies ex, eget fermentum libero eleifend eget. Vivamus at diam aliquam, elementum nunc at, ultricies tellus. Aenean et felis id felis volutpat aliquam et at tortor. Phasellus fermentum dictum tincidunt. Phasellus auctor diam metus, vitae tristique arcu gravida et.</p>
@@ -25,6 +41,18 @@
 		<h2 >Level 2 title</h2>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec congue metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in ipsum venenatis, mollis ante ac, iaculis arcu. Aenean lobortis lorem ut interdum tincidunt. Fusce vel vulputate diam. Phasellus nisi nulla, molestie vitae ullamcorper sed, blandit at mi. Nullam eu egestas nunc, vel blandit sem. </p>
 		<hr />
+		<h3 class="js-ja__taboola-below-article-thumbnails--title hidden">Sponsorisé par Taboola</h3>
+		<p>Lorem ipsum dolor sit amet
+		<div id="taboola-below-article-thumbnails"></div>
+		<script type="text/javascript">
+		/*window._taboola = window._taboola || [];
+		_taboola.push({
+		mode: 'thumbnails-a',
+		container: 'taboola-below-article-thumbnails',
+		placement: 'Below Article Thumbnails',
+		target_type: 'mix'
+		});*/
+		</script>
 		<p><button type="submit" id="my-action-btn" value="" class="btn btn-success">Do Some Stuff</button></p>
 	</div>
 
@@ -34,6 +62,10 @@
 		<script src="app.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+		<script type="text/javascript">
+		/*window._taboola = window._taboola || [];
+		_taboola.push({flush: true});*/
+		</script>
 	</body>
 </html>
 
