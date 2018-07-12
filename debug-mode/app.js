@@ -57,45 +57,51 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
 
       publics.enableDebugMode = function () {
         localStorage.setItem( 'CBC-DEBUG-MODE', 'true' );
-        window.location.reload();
-        _log('Debug MODE is ON')
+        //window.location.reload();
+        _log = console.log.bind(console);
+        _error = console.error.bind(console);
+        _log('Debug MODE is ON');
       }
 
 
 
       publics.disableDebugMode = function () {
         localStorage.setItem( 'CBC-DEBUG-MODE', 'false' );
-         _log('Debug MODE is OFF')
+         _log('Debug MODE is OFF');
+         _log = function () {};
+         _error = function () {};
       }
 
-      publics.ls_JADebugMode_exists = function(){
-        if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-          var ls_JADebugMode_value = localStorage.getItem('CBC-DEBUG-MODE');
-          console.log('la variable existe et a pour valeur...'+ls_JADebugMode_value );
-          return true
+
+      publics.is_LocalStorage = function(){
+        if(typeof(localStorage)!== undefined){
+          return  true ;
         }
         else{
-          console.log('CBC-DEBUG-MODE n existe pas');
+          return  false ;
+        }
+      }
+
+      publics.checkLocalStorageKeyExist = function(key){
+        //text = JSON.stringify(key)
+        if(localStorage[key] !== undefined){
+          var ls_value = localStorage.getItem(key);
+          //console.log('Valeur du local storage '+key+' : '+ls_value);
+          return true ;
+        }
+        else{
           return false
         }
       }
 
-      publics.ls_JADebugMode_value = function(){
-        if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-          var ls_JADebugMode_value = localStorage.getItem('CBC-DEBUG-MODE');
-          if(ls_JADebugMode_value == 'true'){
-            console.log('BBBB');
-            return true
-          }
-          else{
-            console.log('CCCC');
-            return false
-          }
+      publics.checkLocalStorageValue = function(key){
+        if (publics.checkLocalStorageKeyExist(key)){
+            var ls_value = JSON.parse(localStorage.getItem(key));
+            return ls_value
         }
-        else{
-          console.log('DDDD');
-          return false
 
+        else{
+          console.error('Cette entrée n\'existe pas !');
         }
       }
 

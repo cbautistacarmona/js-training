@@ -22,36 +22,37 @@
 
 		</style>
 		<script type="text/javascript">
-		JAdebug = {
-         	channel : {
-         		pub: {
-         			label: '[PUB] ',
-         			/*enable: true*/
-         		},
-         		nav: {
-         			label: '[NAVIGATION] ',
-         			/*enable: true*/
-         		}
-         	}
-         }
+
+			JAdebug = {
+				//status : false,
+
+	         	channel : {
+	         		pub: {
+	         			label: '[PUB] ',
+	         			enable: true
+	         		},
+	         		nav: {
+	         			label: '[NAVIGATION] ',
+	         			enable: true
+	         		}
+	         	}
+	         }
+			/*if(localStorage['CBC-DEBUG-MODE'] !== undefined){
+
+				JAdebug.status = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+			}
+			else{
+				JAdebug.status = false
+			}*/
 			if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-				var ls_JADebugMode_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));;
-				if(ls_JADebugMode_value === true){
-					JAdebug.status = true;
-					console.log(ls_JADebugMode_value);
-				}
-				else{
-					JAdebug.status = false
-				}
+				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+				JAdebug.status = ls_value ;
 			}
 			else{
 				JAdebug.status = false
 			}
        		var _log = JAdebug.status ? console.log.bind(console) : function () {};
             var _error = JAdebug.status ? console.error.bind(console) : function () {};
-
-
-
 
 		</script>
 	</head>
