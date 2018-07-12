@@ -40,7 +40,7 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         //settings.JAdebug = publics.ls_JADebugMode_value();
         //console.log('settings.JAdebug est '+settings.JAdebug+'et est un '+typeof(settings.JAdebug));
 
-        _log('Le script DebugMode version '+codeVersion+' est initialisé.');
+        _log('Le mode DEBUG '+codeVersion+' est initialisé.');
 
         publics.manageEvents();
       }
@@ -55,14 +55,17 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
 
       }
 
-      publics.enableDebugStatus = function () {
+      publics.enableDebugMode = function () {
         localStorage.setItem( 'CBC-DEBUG-MODE', 'true' );
+        window.location.reload();
+        _log('Debug MODE is ON')
       }
 
 
 
-      publics.disableDebugStatus = function () {
+      publics.disableDebugMode = function () {
         localStorage.setItem( 'CBC-DEBUG-MODE', 'false' );
+         _log('Debug MODE is OFF')
       }
 
       publics.ls_JADebugMode_exists = function(){
@@ -101,14 +104,25 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
       publics.manageEvents = function () {
 
         // Au Chargement du dom
-      $( document ).ready( function ( $ ) {
+        $( document ).ready( function ( $ ) {
 
-      });
+          _log(JAdebug.channel.pub.label, 'Personne [dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.');
+         _error(JAdebug.channel.nav.label, 'ht Personne [dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.');
 
-      // When all assets (including images) are loaded
+           _log(JAdebug.channel.nav.label, 'test');
+
+        });
+
+        $('body').on('click', '#my-action-btn-1' , function(e) {
+            publics.enableDebugMode();
+        });
+
+        $('body').on('click', '#my-action-btn-2' , function(e) {
+            publics.disableDebugMode();
+        });
+
+        // When all assets (including images) are loaded
         $( window ).on( 'load', function () {
-
-
 
 
         });
