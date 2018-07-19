@@ -81,7 +81,7 @@ var JA_GaEventTracking = JA_GaEventTracking || {}; // Si « JA_GaEventTracking �
       // Tracking général
       $( 'body' ).each(function(index) {
 
-          $(this).on('click', '.tracking-click-evt-ga'+settings.version, function(e){
+          $(this).on('click', '.ja-tracking-event'+settings.version, function(e){
           var data = $(this).data("ga_analytics");
 
               if(e.type == "touchstart") {

@@ -29,7 +29,7 @@
 	         	channel : {
 	         		pub: {
 	         			label: '[PUB] ',
-	         			enable: true
+	         			enable: false
 	         		},
 	         		nav: {
 	         			label: '[NAVIGATION] ',
@@ -51,8 +51,9 @@
 			else{
 				JAdebug.status = false
 			}
-       		var _log = JAdebug.status ? console.log.bind(console) : function () {};
-            var _error = JAdebug.status ? console.error.bind(console) : function () {};
+
+       		var _log = JAdebug.status == true ? console.log.bind(console) : function () {};
+            var _error = JAdebug.status == true ? console.error.bind(console) : function () {};
 
 		</script>
 	</head>

@@ -12,7 +12,6 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
 
 (function( $ , publics ){
 
-
      // Options
      var settings = {
           version: "1.0.0",
@@ -22,12 +21,12 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
          // JAdebug: false
       }
 
-   //var _log = settings.JAdebug ? console.log.bind(console) : function () {};
+    //var _log = settings.JAdebug ? console.log.bind(console) : function () {};
 
 
     var privates = {}; // Tout ce qui ne devra pas quitter le contexte d'execution sera accroché à « privates » et accessible uniquement via « privates ».
 
-      /* Attributs / Fonctions privées */
+    /* Attributs / Fonctions privées */
 
     /*privates.myGreatFunction = function() {
 
@@ -45,14 +44,13 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         publics.manageEvents();
       }
 
-       publics.debugModeStatus = function () {
+      publics.debugModeStatus = function () {
           if (settings.JAdebug == true){
             _log('Debug Mode ON');
           }
           else{
             _log('Debug Mode OFF');
           }
-
       }
 
       publics.enableDebugMode = function () {
@@ -63,15 +61,12 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         _log('Debug MODE is ON');
       }
 
-
-
       publics.disableDebugMode = function () {
         localStorage.setItem( 'CBC-DEBUG-MODE', 'false' );
-         _log('Debug MODE is OFF');
-         _log = function () {};
-         _error = function () {};
+        _log('Debug MODE is OFF');
+        _log = function () {};
+        _error = function () {};
       }
-
 
       publics.is_LocalStorage = function(){
         if(typeof(localStorage)!== undefined){
@@ -90,7 +85,7 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
           return true ;
         }
         else{
-          return false
+          return false ;
         }
       }
 
@@ -105,6 +100,14 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         }
       }
 
+      //Fonctions à faire
+      publics.DebugModeSuscribeAll = function(){
+
+      }
+
+      publics.DebugModeSuscribeChannel = function(channel){
+        localStorage.setItem( 'CBC-DEBUG-MODE-CHANNELS', JAdebug.channel );
+      }
 
       // All events
       publics.manageEvents = function () {
