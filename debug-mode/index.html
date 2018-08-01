@@ -15,28 +15,39 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<style type="text/css" media="screen">
-			p{
-				hyphens: auto;
-			}
 
-		</style>
+		<!--script src="http://console.re/connector.js" data-channel="a56f-0ea5-b436" id="consolerescript"></script-->
 		<script type="text/javascript">
 
 			JAdebug = {
-				//status : false,
+				//status : true,
 
 	         	channel : {
 	         		pub: {
-	         			label: '[PUB] ',
+	         			label: '[PUB]',
 	         			enable: false
 	         		},
 	         		nav: {
-	         			label: '[NAVIGATION] ',
+	         			label: '[NAVIGATION]',
 	         			enable: true
 	         		}
 	         	}
 	         }
+
+	       /* JAdebug = {
+	         	"channel" : [
+		         		{
+		         		"pub": {
+		         			"label": "[PUB]",
+		         			"enable": "false"
+		         		},
+		         		"nav": {
+		         			"label": "[NAVIGATION]",
+		         			"enable": "true"
+		         		}
+	         		}
+	         	]
+	        }*/
 			/*if(localStorage['CBC-DEBUG-MODE'] !== undefined){
 
 				JAdebug.status = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
@@ -44,20 +55,92 @@
 			else{
 				JAdebug.status = false
 			}*/
+
+			//  && JAdebug.channel.pub.enable !== true
+
+			/*function debugModeStatus(state) {
+	          	state = JAdebug.status;
+	          	if (state === true){
+	            	_log = console.log.bind(console);
+
+	            	_error = console.error.bind(console);
+	          	}
+	          	else{
+	            	_log = function () {};
+	            	_error = function () {};
+	          	}
+		     }*/
+
+
+			/*if(localStorage['CBC-DEBUG-MODE'] !== undefined){
+				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+				JAdebug.status = ls_value ;
+				if(JAdebug.status == true){
+					_log = console.log.bind(console);
+					_error = console.error.bind(console);
+				}
+				else{
+					_log = function () {};
+        			_error = function () {};
+				}
+			}
+			else{
+				JAdebug.status = false;
+			}*/
+
 			if(localStorage['CBC-DEBUG-MODE'] !== undefined){
 				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
 				JAdebug.status = ls_value ;
+				//DebugMode.setDebugModeStatus(ls_value);
 			}
 			else{
-				JAdebug.status = false
+				JAdebug.status = false;
 			}
 
-       		var _log = JAdebug.status == true ? console.log.bind(console) : function () {};
-            var _error = JAdebug.status == true ? console.error.bind(console) : function () {};
+			//debugModeStatus();
+
+			//var DEBUG = true;
+
+			function _log() {
+			    if (JAdebug.status === true) {
+			    	var response = arguments;
+			    	for (var i = 0; i < response.length; i++) {
+			    		console.log(response[i]);
+			    	}
+			       //console.log(response[0], response[1], response[2]);
+			    }
+			}
+			function _error() {
+				 if (JAdebug.status === true) {
+			    	var response = arguments;
+			    	for (var i = 0; i < response.length; i++) {
+			    		console.error(response[i]);
+			    	}
+			       //console.error(response[0], response[1], response[2]);
+			    }
+			    /*if (JAdebug.status === true) {
+			       console.error(arguments);
+			    }*/
+			}
+
+			function _info() {
+			    if (JAdebug.status === true) {
+			    	var response = arguments;
+			       //console.info(response[0], response[1], response[2]);
+			       for (var i = 0; i < response.length; i++) {
+			    		console.info(response[i]);
+			    	}
+			    }
+			}
+
+
+       		/*var _log = JAdebug.status == true ? console.log.bind(console) : function () {};
+            var _error = JAdebug.status == true ? console.error.bind(console) : function () {};*/
 
 		</script>
 	</head>
 	<body>
+
 	<div class="container">
 		<h1 class="text-center">Mise en place d'un mode de debug</h1>
 		<hr />
