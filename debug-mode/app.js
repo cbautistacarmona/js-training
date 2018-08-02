@@ -111,8 +111,13 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
 
       }
 
-      publics.DebugModeSuscribeChannel = function(channel){
-        //localStorage.setItem( 'CBC-DEBUG-MODE-CHANNELS', JAdebug.channel );
+
+
+       publics.updateChannelSubscription = function(state){
+        publics.populateJAdebug();
+        JAdebug.channel.pub.enable = state ;
+        publics.saveJAdebug();// Sauvez dans LS
+
       }
 
       // All events

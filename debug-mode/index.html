@@ -76,7 +76,6 @@
 			}
 
 
-
 			function _log() {
 			    if (JAdebug.status === true) {
 			    	var response = arguments;
@@ -86,23 +85,9 @@
 			    		message += response[i]+" " ;
 			    	}
 			    	console.log(message);
-			    	/*console.log("Test______"+response[0]);
-
-			    	if(response[0].enable == true){
-						console.log('test AAAA');
-			    	}
-			    	else{
-						console.log('test BBBB');
-			    	}*/
 			    }
 			}
 			function _error() {
-				 /*if (JAdebug.status === true) {
-			    	var response = arguments;
-			    	for (var i = 0; i < response.length; i++) {
-			    		console.error(response[i]);
-			    	}
-			    }*/
 			     if (JAdebug.status === true) {
 			    	var response = arguments;
 			    	var message = "";
@@ -115,12 +100,6 @@
 			}
 
 			function _info() {
-			    /*if (JAdebug.status === true) {
-			    	var response = arguments;
-			       for (var i = 0; i < response.length; i++) {
-			    		console.info(response[i]);
-			    	}
-			    }*/
 			    if (JAdebug.status === true) {
 			    	var response = arguments;
 			    	var message = "";
@@ -130,7 +109,6 @@
 			    	}
 			    	console.info(message);
 			    }
-
 			}
 
 		</script>
