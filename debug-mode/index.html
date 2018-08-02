@@ -19,7 +19,7 @@
 		<!--script src="http://console.re/connector.js" data-channel="a56f-0ea5-b436" id="consolerescript"></script-->
 		<script type="text/javascript">
 
-			JAdebug = {
+		/*	JAdebug = {
 				//status : true,
 
 	         	channel : {
@@ -33,8 +33,8 @@
 	         		}
 	         	}
 	         }
-
-	      /*   JAdebug = {
+*/
+	       /* JAdebug = {
 				//status : true,
 
 	         	channel : [{
@@ -49,7 +49,7 @@
 	         	}]
 	         }
 */
-	       /* JAdebug = {
+	        JAdebug = {
 	         	"channel" : [
 		         		{
 		         		"pub": {
@@ -62,15 +62,14 @@
 		         		}
 	         		}
 	         	]
-	        }*/
-	        for (var i = 0; i < JAdebug.channel.length; i++) {
-	        	console.log( JAdebug.channel[i].label);
-	        };
-//for (var i = 0; i < JAdebug.channel.length; i++) { console.log(i)};
+	        }
+
+
 			// Check Debug Mode
 			if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
-				JAdebug.status = ls_value.status ;
+				//var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+				JAdebug = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+				//JAdebug.status = ls_value.status ;
 			}
 			else{
 				JAdebug.status = false;
@@ -87,6 +86,7 @@
 			    		message += response[i]+" " ;
 			    	}
 			    	console.log(message);
+
 			    }
 			}
 			function _error() {
