@@ -19,7 +19,7 @@
 		<!--script src="http://console.re/connector.js" data-channel="a56f-0ea5-b436" id="consolerescript"></script-->
 		<script type="text/javascript">
 
-		/*	JAdebug = {
+			JAdebug = {
 				//status : true,
 
 	         	channel : {
@@ -33,7 +33,7 @@
 	         		}
 	         	}
 	         }
-*/
+
 	       /* JAdebug = {
 				//status : true,
 
@@ -49,7 +49,7 @@
 	         	}]
 	         }
 */
-	        JAdebug = {
+	       /* JAdebug = {
 	         	"channel" : [
 		         		{
 		         		"pub": {
@@ -62,7 +62,7 @@
 		         		}
 	         		}
 	         	]
-	        }
+	        }*/
 
 
 			// Check Debug Mode
@@ -86,7 +86,14 @@
 			    		message += response[i]+" " ;
 			    	}
 			    	console.log(message);
+			    	/*console.log("Test______"+response[0]);
 
+			    	if(response[0].enable == true){
+						console.log('test AAAA');
+			    	}
+			    	else{
+						console.log('test BBBB');
+			    	}*/
 			    }
 			}
 			function _error() {
