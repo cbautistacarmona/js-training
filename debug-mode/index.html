@@ -34,6 +34,21 @@
 	         	}
 	         }
 
+	      /*   JAdebug = {
+				//status : true,
+
+	         	channel : [{
+	         		pub: {
+	         			label: '[PUB]',
+	         			enable: false
+	         		},
+	         		nav: {
+	         			label: '[NAVIGATION]',
+	         			enable: true
+	         		}
+	         	}]
+	         }
+*/
 	       /* JAdebug = {
 	         	"channel" : [
 		         		{
@@ -48,94 +63,68 @@
 	         		}
 	         	]
 	        }*/
-			/*if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-
-				JAdebug.status = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
-			}
-			else{
-				JAdebug.status = false
-			}*/
-
-			//  && JAdebug.channel.pub.enable !== true
-
-			/*function debugModeStatus(state) {
-	          	state = JAdebug.status;
-	          	if (state === true){
-	            	_log = console.log.bind(console);
-
-	            	_error = console.error.bind(console);
-	          	}
-	          	else{
-	            	_log = function () {};
-	            	_error = function () {};
-	          	}
-		     }*/
-
-
-			/*if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
-				JAdebug.status = ls_value ;
-				if(JAdebug.status == true){
-					_log = console.log.bind(console);
-					_error = console.error.bind(console);
-				}
-				else{
-					_log = function () {};
-        			_error = function () {};
-				}
-			}
-			else{
-				JAdebug.status = false;
-			}*/
-
+	        for (var i = 0; i < JAdebug.channel.length; i++) {
+	        	console.log( JAdebug.channel[i].label);
+	        };
+//for (var i = 0; i < JAdebug.channel.length; i++) { console.log(i)};
+			// Check Debug Mode
 			if(localStorage['CBC-DEBUG-MODE'] !== undefined){
 				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
-				JAdebug.status = ls_value ;
-				//DebugMode.setDebugModeStatus(ls_value);
+				JAdebug.status = ls_value.status ;
 			}
 			else{
 				JAdebug.status = false;
 			}
 
-			//debugModeStatus();
 
-			//var DEBUG = true;
 
 			function _log() {
 			    if (JAdebug.status === true) {
 			    	var response = arguments;
+			    	var message = "";
 			    	for (var i = 0; i < response.length; i++) {
-			    		console.log(response[i]);
+			    		//console.log(response[i]);
+			    		message += response[i]+" " ;
 			    	}
-			       //console.log(response[0], response[1], response[2]);
+			    	console.log(message);
 			    }
 			}
 			function _error() {
-				 if (JAdebug.status === true) {
+				 /*if (JAdebug.status === true) {
 			    	var response = arguments;
 			    	for (var i = 0; i < response.length; i++) {
 			    		console.error(response[i]);
 			    	}
-			       //console.error(response[0], response[1], response[2]);
-			    }
-			    /*if (JAdebug.status === true) {
-			       console.error(arguments);
 			    }*/
+			     if (JAdebug.status === true) {
+			    	var response = arguments;
+			    	var message = "";
+			    	for (var i = 0; i < response.length; i++) {
+			    		//console.log(response[i]);
+			    		message += response[i]+" " ;
+			    	}
+			    	console.error(message);
+			    }
 			}
 
 			function _info() {
-			    if (JAdebug.status === true) {
+			    /*if (JAdebug.status === true) {
 			    	var response = arguments;
-			       //console.info(response[0], response[1], response[2]);
 			       for (var i = 0; i < response.length; i++) {
 			    		console.info(response[i]);
 			    	}
+			    }*/
+			    if (JAdebug.status === true) {
+			    	var response = arguments;
+			    	var message = "";
+			    	for (var i = 0; i < response.length; i++) {
+			    		//console.log(response[i]);
+			    		message += response[i]+" ";
+			    	}
+			    	console.info(message);
 			    }
+
 			}
-
-
-       		/*var _log = JAdebug.status == true ? console.log.bind(console) : function () {};
-            var _error = JAdebug.status == true ? console.error.bind(console) : function () {};*/
 
 		</script>
 	</head>

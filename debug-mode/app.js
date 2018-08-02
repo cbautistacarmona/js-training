@@ -44,19 +44,24 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         publics.manageEvents();
       }
 
-      publics.setDebugModeStatus = function (state) {
-          /*state = JAdebug.status ;
-          if (state === true){
-            _log = console.log.bind(console);
-            _error = console.error.bind(console);
-          }
-          else{
-             _log = function () {};
-            _error = function () {};
-          }*/
+      publics.saveJAdebug = function(){
+        localStorage.setItem( 'CBC-DEBUG-MODE', JSON.stringify(JAdebug));
+      }
 
+      publics.populateJAdebug = function(){
+        JAdebug = JSON.parse( localStorage.getItem( 'CBC-DEBUG-MODE' ) );
+      }
+
+      publics.setDebugModeStatus = function (state) {
           if(publics.is_LocalStorage() === true){
-            localStorage.setItem( 'CBC-DEBUG-MODE', JSON.stringify(state));
+            // Update status
+            JAdebug.status = state;
+            // Save in localstorage
+            publics.saveJAdebug();
+            localStorage.setItem( 'CBC-DEBUG-MODE', JSON.stringify(JAdebug));
+            //localStorage.setItem(  'CBC-DEBUG-MODE', JSON.stringify( userDatas ) );
+
+            //JAdebug.status = state;
 
             if(state == true){
                _log('Debug MODE is ON');
@@ -65,31 +70,8 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
               console.log('Debug MODE is OFF');
             }
           }
-
-          /*if(publics.checkLocalStorageKeyExist('CBC-DEBUG-MODE')){
-            localStorage.setItem( 'CBC-DEBUG-MODE', JSON.stringify(state) );
-          }
-          else{
-            localStorage.setItem( 'CBC-DEBUG-MODE', state );
-          }*/
       }
 
-      publics.enableDebugMode = function () {
-        /*localStorage.setItem( 'CBC-DEBUG-MODE', 'true' );
-        _log = console.log.bind(console);
-        _error = console.error.bind(console);
-        _log('Debug MODE is ON');*/
-        publics.setDebugModeStatus(true);
-
-      }
-
-      publics.disableDebugMode = function () {
-        /*localStorage.setItem( 'CBC-DEBUG-MODE', 'false' );
-        _log('Debug MODE is OFF');
-        _log = function () {};
-        _error = function () {};*/
-         publics.setDebugModeStatus(false);
-      }
 
       publics.is_LocalStorage = function(){
         if(typeof(localStorage)!== undefined){
@@ -124,16 +106,13 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         }
       }
 
-      // Display console
-
-
       //Fonctions à faire
       publics.DebugModeSuscribeAll = function(){
 
       }
 
       publics.DebugModeSuscribeChannel = function(channel){
-        localStorage.setItem( 'CBC-DEBUG-MODE-CHANNELS', JAdebug.channel );
+        //localStorage.setItem( 'CBC-DEBUG-MODE-CHANNELS', JAdebug.channel );
       }
 
       // All events
@@ -142,7 +121,7 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         // Au Chargement du dom
         $( document ).ready( function ( $ ) {
 
-          _log(JAdebug.channel.pub.label , '%cPersonne [dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.',  "color: yellow; font-style: italic; background-color: blue;padding: 2px");
+          _log(JAdebug.channel.pub.label , 'test', '[dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.',  "color: yellow; font-style: italic; background-color: blue;padding: 2px");
           _error(JAdebug.channel.nav.label, 'ht Personne [dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.');
 
           _log(JAdebug.channel.pub.label, ["criteo","Mon super message."]);
