@@ -21,10 +21,14 @@
 
 			JAdebug = {
 				//status : true,
-
+				//version : '1.0.0',
 	         	channel : {
 	         		pub: {
 	         			label: '[PUB]',
+	         			enable: false
+	         		},
+	         		adtech: {
+	         			label: '[ADTECH]',
 	         			enable: false
 	         		},
 	         		nav: {
@@ -99,23 +103,35 @@
 			    if (JAdebug.status === true) {
 			    	var channels = new Map(Object.entries(JAdebug.channel));
 			    	//var test = JAdebug.channel.inputChannel;
+					//JAdebug.channel['nav'].enable = state;
+        			var channelLabel = JAdebug.channel['nav'].label;
 
-					//console.log("Le channel de ce log est : "+test);
 			    	switch (logLevel) {
 					  case 'error':
-					    console.error(message);
+					     if(channels.get('nav').enable ===true){
+					    	 console.error(channelLabel, message);
+					    }
+					    /*else{
+					    	 console.log('Vous ne pouvez pas lire ce message');
+					    }*/
 					    break;
-					  case 'info':
-					    console.info(message);
+
+					  	case 'info':
+					     if(channels.get('nav').enable === true){
+					    	 console.info(channelLabel, message);
+					    }
+					    /*else{
+					    	 console.log('Vous ne pouvez pas lire ce message');
+					    }*/
 
 					    break;
 					    default:
 					    if(channels.get('nav').enable === true){
-					    	 console.log(message);
+					    	 console.log(channelLabel, message);
 					    }
-					    else{
+					    /*else{
 					    	 console.log('Vous ne pouvez pas lire ce message');
-					    }
+					    }*/
 
 					    //console.log("Le channel de ce log est en statut : "+channels.get('nav').enable);
 					}
