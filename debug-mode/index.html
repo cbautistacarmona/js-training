@@ -21,15 +21,15 @@
 
 			JAdebug = {
 				//status : true,
-				version : '1.0.3',
+				version : '1.0.4',
 	         	channel : {
 	         		pub: {
 	         			label: '[PUB]',
-	         			enable: false
+	         			enable: true
 	         		},
 	         		adtech: {
 	         			label: '[ADTECH]',
-	         			enable: false
+	         			enable: true
 	         		},
 	         		nav: {
 	         			label: '[NAVIGATION]',
@@ -110,41 +110,38 @@
 
 			function _log(inputChannel, message, logLevel) {
 			    if (JAdebug.status === true) {
-			    	var channels = new Map(Object.entries(JAdebug.channel));
+			    	//var channels = new Map(Object.entries(JAdebug.channel));
 			    	//var test = JAdebug.channel.inputChannel;
 					//JAdebug.channel['nav'].enable = state;
-        			var channelLabel = JAdebug.channel['debug'].label;
+        			var channelLabel = JAdebug.channel[inputChannel].label;
+        			var inputChannelStatus = JAdebug.channel[inputChannel].enable;
 
 			    	switch (logLevel) {
 					  case 'error':
-					     if(channels.get('debug').enable ===true){
-					    	 console.error(channelLabel, message);
+					    if(inputChannelStatus === true){
+					    	console.error(channelLabel, message);
 					    }
-					    /*else{
-					    	 console.log('Vous ne pouvez pas lire ce message');
-					    }*/
 					    break;
 
 					  	case 'info':
-					     if(channels.get('debug').enable === true){
-					    	 console.info(channelLabel, message);
+					  	if(inputChannelStatus === true){
+					    	console.info(channelLabel, message);
 					    }
+					     /*if(channels.get('debug').enable === true){
+					    	 console.info(channelLabel, message);
+					    }*/
 					    /*else{
 					    	 console.log('Vous ne pouvez pas lire ce message');
 					    }*/
-
 					    break;
+
 					    default:
-					    if(channels.get('debug').enable === true){
+
+					    if(inputChannelStatus === true){
 					    	 console.log(channelLabel, message);
 					    }
-					    /*else{
-					    	 console.log('Vous ne pouvez pas lire ce message');
-					    }*/
 
-					    //console.log("Le channel de ce log est en statut : "+channels.get('nav').enable);
 					}
-
 			    }
 			}
 			/*function _error() {
