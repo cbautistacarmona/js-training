@@ -89,25 +89,28 @@
 			    	console.log(message);
 			    }
 			}*/
-			function _log(channel, message) {
+			function _log(channel, message, logLevel) {
 			    if (JAdebug.status === true) {
 			    	channels = new Map(Object.entries(JAdebug.channel));
-			    	var currentChannel = channel ;
 
-					console.log("Le channel de ce log est en statut : "+channels.get((currentChannel)).enable);
+					//console.log("Le channel de ce log est en statut : "+channels.get((channel)).enable);
 
+			    	switch (logLevel) {
+					  case 'error':
+					    console.error(message);
+					    break;
+					  case 'info':
+					    console.info(message);
 
-			    	/*var response = arguments;
-			    	 message = "";
-			    	for (var i = 0; i < response.length; i++) {
-			    		//console.log(response[i]);
-			    		message += response[i]+" " ;
-			    	}
-			    	console.log(message);*/
+					    break;
+					  default:
+					    console.log(message);
+					    console.log("Le channel de ce log est en statut : "+channels.get((channel)).enable);
+					}
 
 			    }
 			}
-			function _error() {
+			/*function _error() {
 			     if (JAdebug.status === true) {
 			     	var channels = JAdebug.channel;
 
@@ -131,7 +134,7 @@
 			    	}
 			    	console.info(message);
 			    }
-			}
+			}*/
 
 		</script>
 	</head>
