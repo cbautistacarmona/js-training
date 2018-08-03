@@ -30,6 +30,10 @@
 	         		nav: {
 	         			label: '[NAVIGATION]',
 	         			enable: true
+	         		},
+	         		debug: {
+	         			label: '[DEBUG]',
+	         			enable: true
 	         		}
 	         	}
 	         }
@@ -89,12 +93,14 @@
 			    	console.log(message);
 			    }
 			}*/
-			function _log(channel, message, logLevel) {
+
+
+			function _log(inputChannel, message, logLevel) {
 			    if (JAdebug.status === true) {
-			    	channels = new Map(Object.entries(JAdebug.channel));
+			    	var channels = new Map(Object.entries(JAdebug.channel));
+			    	//var test = JAdebug.channel.inputChannel;
 
-					//console.log("Le channel de ce log est en statut : "+channels.get((channel)).enable);
-
+					//console.log("Le channel de ce log est : "+test);
 			    	switch (logLevel) {
 					  case 'error':
 					    console.error(message);
@@ -103,9 +109,15 @@
 					    console.info(message);
 
 					    break;
-					  default:
-					    console.log(message);
-					    console.log("Le channel de ce log est en statut : "+channels.get((channel)).enable);
+					    default:
+					    if(channels.get('nav').enable === true){
+					    	 console.log(message);
+					    }
+					    else{
+					    	 console.log('Vous ne pouvez pas lire ce message');
+					    }
+
+					    //console.log("Le channel de ce log est en statut : "+channels.get('nav').enable);
 					}
 
 			    }
