@@ -21,7 +21,7 @@
 
 			JAdebug = {
 				//status : true,
-				//version : '1.0.0',
+				version : '1.0.3',
 	         	channel : {
 	         		pub: {
 	         			label: '[PUB]',
@@ -75,8 +75,17 @@
 
 			// Check Debug Mode
 			if(localStorage['CBC-DEBUG-MODE'] !== undefined){
-				//var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
-				JAdebug = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+				var ls_value = JSON.parse(localStorage.getItem('CBC-DEBUG-MODE'));
+
+				if(ls_value.version == JAdebug.version){ // Check version Object JAdebug vs localstorage
+					JAdebug = ls_value;
+				}
+				else
+				{
+					localStorage.setItem( 'CBC-DEBUG-MODE', JSON.stringify(JAdebug));
+					console.log('pas la même on met à jour !')
+				}
+
 				//JAdebug.status = ls_value.status ;
 			}
 			else{
@@ -104,11 +113,11 @@
 			    	var channels = new Map(Object.entries(JAdebug.channel));
 			    	//var test = JAdebug.channel.inputChannel;
 					//JAdebug.channel['nav'].enable = state;
-        			var channelLabel = JAdebug.channel['nav'].label;
+        			var channelLabel = JAdebug.channel['debug'].label;
 
 			    	switch (logLevel) {
 					  case 'error':
-					     if(channels.get('nav').enable ===true){
+					     if(channels.get('debug').enable ===true){
 					    	 console.error(channelLabel, message);
 					    }
 					    /*else{
@@ -117,7 +126,7 @@
 					    break;
 
 					  	case 'info':
-					     if(channels.get('nav').enable === true){
+					     if(channels.get('debug').enable === true){
 					    	 console.info(channelLabel, message);
 					    }
 					    /*else{
@@ -126,7 +135,7 @@
 
 					    break;
 					    default:
-					    if(channels.get('nav').enable === true){
+					    if(channels.get('debug').enable === true){
 					    	 console.log(channelLabel, message);
 					    }
 					    /*else{

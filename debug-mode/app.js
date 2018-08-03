@@ -39,7 +39,7 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         //settings.JAdebug = publics.ls_JADebugMode_value();
         //console.log('settings.JAdebug est '+settings.JAdebug+'et est un '+typeof(settings.JAdebug));
 
-        _log('Le mode DEBUG '+codeVersion+' est initialisé.');
+        _log('debug','Le mode DEBUG '+codeVersion+' est initialisé.', 'info');
 
         publics.manageEvents();
       }
@@ -64,7 +64,7 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
             //JAdebug.status = state;
 
             if(state == true){
-               _log('Debug MODE is ON');
+               _log('debug','Debug MODE is ON', 'info');
             }
             else{
               console.log('Debug MODE is OFF');
@@ -126,18 +126,18 @@ var DebugMode = DebugMode || {}; // Si « DebugMode » a déjà été crée dans
         // Au Chargement du dom
         $( document ).ready( function ( $ ) {
 
-          if(localStorage['CBC-DEBUG-MODE'] !== undefined){
+          /*if(localStorage['CBC-DEBUG-MODE'] !== undefined){
             publics.saveJAdebug();
-          }
+          }*/
 
           //publics.populateJAdebug();
-        _log(JAdebug.channel.pub.label , '[dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.');
+          _log('pub' , '[dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.');
 
-          _log(JAdebug.channel.pub.label , '[dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.', 'error');
+          _log('pub' , '[dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.', 'error');
 
          /* _error(JAdebug.channel.nav.label, 'ht Personne [dit Épicure] ne craint ni ne fuit la volupté en tant que volupté, mais en tant qu’elle attire de grandes douleurs à ceux qui ne savent pas en faire un usage modéré et raisonnable ; et personne n’aime ni ne recherche la douleur comme douleur, mais parce qu’il arrive quelquefois que, par le travail et par la peine, on parvienne à jouir d’une grande volupté. En effet, pour descendre jusqu’aux petites choses, qui de vous ne fait point quelque exercice pénible pour en retirer quelque sorte d’utilité ? Et qui pourrait justement blâmer, ou celui qui rechercherait une volupté qui ne pourrait être suivie de rien de fâcheux, ou celui qui éviterait une douleur dont il ne pourrait espérer aucun plaisir.');*/
 
-          _log(JAdebug.channel.pub.label, ["criteo","Mon super message."], 'info');
+         // _log(JAdebug.channel.pub.label, ["criteo","Mon super message."], 'info');
 
           //_info(JAdebug.channel.pub.label, 'test info')*/
 
